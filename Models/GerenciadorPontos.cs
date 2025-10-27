@@ -18,9 +18,15 @@ namespace ProjetoPonto.Models
             proximoId++;
         }
 
-        public void RemoverRegistroPonto()
+        public void RemoverRegistroPonto(int id)
         {
-            // TODO: Criar a lógica
+            for (int i = 0; i < listaPontosRegistrados.Count; i++)
+            {
+                if (listaPontosRegistrados[i].IdPonto == id)
+                {
+                    listaPontosRegistrados.RemoveAt(i);
+                }
+            }
         }
 
         public void AlterarHorarioPonto()

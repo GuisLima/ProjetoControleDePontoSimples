@@ -9,7 +9,9 @@ namespace ProjetoPonto.Models
     public class GerenciadorPontos
     {
         public List<Ponto> listaPontosRegistrados = new List<Ponto>();
+        public Ponto PontosFuncionarios { get;}
         private int proximoId = 1;
+
 
         public void AdicionarRegistroPonto(DateOnly data, TimeOnly horario, Funcionario funcionario)
         {
@@ -29,14 +31,26 @@ namespace ProjetoPonto.Models
             }
         }
 
-        public void AlterarHorarioPonto()
+        public void AlterarHorarioPonto(int id, TimeOnly novoHorario)
         {
-            // TODO: Criar a lógica
+            foreach (var idHorarioRegistrado in listaPontosRegistrados)
+            {
+                if (idHorarioRegistrado.IdPonto == id)
+                {
+                    idHorarioRegistrado.RegistroHoraPonto = novoHorario;
+                }
+            }
         }
 
-        public void AlterarDataPonto()
+        public void AlterarDataPonto(int id, DateOnly novaData)
         {
-            // TODO: Criar a lógica
+            foreach (var idDataRegistrada in listaPontosRegistrados)
+            {
+                if (idDataRegistrada.IdPonto == id)
+                {
+                    idDataRegistrada.RegistroDataPonto = novaData;
+                }
+            }
         }
 
         public void ListarPontos()

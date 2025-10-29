@@ -48,6 +48,7 @@ namespace ProjetoPonto.Models
                 {
                     funcionario.CpfFuncionario = novoCpf;
                 }
+            }
         }
     }
 }

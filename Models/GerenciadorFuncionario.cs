@@ -39,5 +39,15 @@ namespace ProjetoPonto.Models
                 }
             }
         }
+
+        public void AlteraCpfFuncionario(int id, string novoCpf)
+        {
+            foreach (var funcionario in listagemFuncionarios)
+            {
+                if (funcionario.IdFuncionario == id)
+                {
+                    funcionario.CpfFuncionario = novoCpf;
+                }
+        }
     }
 }

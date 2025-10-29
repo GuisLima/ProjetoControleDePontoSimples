@@ -17,5 +17,16 @@ namespace ProjetoPonto.Models
             proximoIdFuncionario++;
 
         }
+
+        public void RemoverFuncionario(int id)
+        {
+            for (int i = 0; i < listagemFuncionarios.Count; i++)
+            {
+                if (listagemFuncionarios[i].IdFuncionario == id)
+                {
+                    listagemFuncionarios.RemoveAt(i);
+                }
+            }
+        }
     }
 }

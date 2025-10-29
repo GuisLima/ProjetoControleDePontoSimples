@@ -28,5 +28,16 @@ namespace ProjetoPonto.Models
                 }
             }
         }
+
+        public void AlteraNomeFuncionario(int id, string novoNome)
+        {
+            foreach (var funcionario in listagemFuncionarios)
+            {
+                if (funcionario.IdFuncionario == id)
+                {
+                    funcionario.NomeFuncionario = novoNome;
+                }
+            }
+        }
     }
 }

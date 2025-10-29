@@ -50,5 +50,13 @@ namespace ProjetoPonto.Models
                 }
             }
         }
+
+        public void ListarFuncionariosCadastrados()
+        {
+            foreach (var funcionario in listagemFuncionarios)
+            {
+                Console.WriteLine($"ID: {funcionario.IdFuncionario} | Nome: {funcionario.NomeFuncionario} | CPF: {funcionario.CpfFuncionario}");
+            }
+        }
     }
 }

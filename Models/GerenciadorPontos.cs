@@ -9,7 +9,6 @@ namespace ProjetoPonto.Models
     public class GerenciadorPontos
     {
         public List<Ponto> listaPontosRegistrados = new List<Ponto>();
-        public Ponto PontosFuncionarios { get;}
         private int proximoId = 1;
 
 

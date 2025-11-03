@@ -14,8 +14,37 @@ namespace ProjetoPonto.Models
             NomeFuncionario = nome;
             CpfFuncionario = cpf;
         }
-        public int IdFuncionario { get; set; }
-        public string NomeFuncionario { get; set; }
-        public string CpfFuncionario { get; set; }
+
+        private string _nomeFuncionario;
+        private string _cpfFuncionario;
+
+        public int IdFuncionario { get; private set; }
+        public string NomeFuncionario 
+        { 
+            get => _nomeFuncionario;
+            set
+            {
+                if (value == "")
+                {
+                    throw new ArgumentException("O nome do funcionário não pode ser vazio");
+                }
+
+                _nomeFuncionario = value;
+            }
+        }
+
+        public string CpfFuncionario 
+        { 
+            get => _cpfFuncionario;
+            set
+            {
+                if (value == "")
+                {
+                    throw new ArgumentException("O cpf do funcionário não pode ser vazio!");
+                }
+
+                _cpfFuncionario = value;
+            }
+        }
     }
 }

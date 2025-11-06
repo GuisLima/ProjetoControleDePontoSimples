@@ -8,7 +8,12 @@ namespace ProjetoPonto.Models
 {
     public class MenuPonto
     {
-        GerenciadorPontos controlerPonto = new GerenciadorPontos();
+        private readonly GerenciadorPontos _controlador;
+        
+        public MenuPonto(GerenciadorPontos controlador)
+        {
+            _controlador = controlador;
+        }
         
         public DateOnly CadastrarDataPonto()
         {

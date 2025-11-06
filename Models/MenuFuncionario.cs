@@ -82,14 +82,19 @@ namespace ProjetoPonto.Models
             switch (entradaUsuario)
             {
                 case "1":
-                    Funcionario funcionario = BuscarFuncionario();
+                    Funcionario funcionarioNome = BuscarFuncionario();
                     Console.WriteLine("Digite o novo nome do funcionário: ");
                     string alteracaoNome = Console.ReadLine();
-                    ControlerFuncionario.AlteraNomeFuncionario(funcionario, alteracaoNome);
+                    ControlerFuncionario.AlteraNomeFuncionario(funcionarioNome, alteracaoNome);
                     Console.WriteLine("Alteração efetuada com sucesso!");
                     break;
 
                 case "2":
+                    Funcionario funcionarioCpf = BuscarFuncionario();
+                    Console.WriteLine("Digite o novo nome do funcionário: ");
+                    string alteracaoCpf = Console.ReadLine();
+                    ControlerFuncionario.AlteraCpfFuncionario(funcionarioCpf, alteracaoCpf);
+                    Console.WriteLine("Alteração efetuada com sucesso!");
                     break;
             }
         }

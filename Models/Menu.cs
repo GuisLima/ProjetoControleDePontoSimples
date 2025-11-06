@@ -20,7 +20,7 @@ namespace ProjetoPonto.Models
             controlerPonto = new GerenciadorPontos();
 
             menuFuncionario = new MenuFuncionario(controlerFuncionario);
-            menuPonto = new MenuPonto();
+            menuPonto = new MenuPonto(controlerPonto);
         }
 
         
@@ -72,6 +72,9 @@ namespace ProjetoPonto.Models
                     case "3":
                         menuFuncionario.AlteracaoCadastroFuncionarios();
                         Console.WriteLine("Para exibir o menu novamente pressione 9");
+                        break;
+
+                    case "4":
                         break;
 
                     case "5":

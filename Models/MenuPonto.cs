@@ -8,6 +8,8 @@ namespace ProjetoPonto.Models
 {
     public class MenuPonto
     {
+        GerenciadorPontos controlerPonto = new GerenciadorPontos();
+        
         public DateOnly CadastrarDataPonto()
         {
 

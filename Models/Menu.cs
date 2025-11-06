@@ -9,11 +9,20 @@ namespace ProjetoPonto.Models
     
     public class Menu
     {
-        GerenciadorFuncionario controlerFuncionario = new GerenciadorFuncionario();
-        GerenciadorPontos controlerPonto = new GerenciadorPontos();
+        private GerenciadorFuncionario controlerFuncionario;
+        private GerenciadorPontos controlerPonto;
+        private MenuFuncionario menuFuncionario;
+        private MenuPonto menuPonto;
 
-        MenuFuncionario menuFuncionario = new MenuFuncionario();
-        MenuPonto menuPonto = new MenuPonto();
+        public Menu()
+        {
+            controlerFuncionario = new GerenciadorFuncionario();
+            controlerPonto = new GerenciadorPontos();
+
+            menuFuncionario = new MenuFuncionario(controlerFuncionario);
+            menuPonto = new MenuPonto();
+        }
+
         
         bool menuFuncional = true;
         string escolhaUsuario;
@@ -57,6 +66,11 @@ namespace ProjetoPonto.Models
                         controlerPonto.AdicionarRegistroPonto(data, hora, funcionario);
 
                         Console.WriteLine("Ponto Cadastrado com sucesso!");
+                        Console.WriteLine("Para exibir o menu novamente pressione 9");
+                        break;
+
+                    case "3":
+                        menuFuncionario.AlteracaoCadastroFuncionarios();
                         Console.WriteLine("Para exibir o menu novamente pressione 9");
                         break;
 

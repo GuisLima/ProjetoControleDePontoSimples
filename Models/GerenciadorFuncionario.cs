@@ -29,34 +29,30 @@ namespace ProjetoPonto.Models
             }
         }
 
-        public void AlteraNomeFuncionario(int id, string novoNome)
-        {
-            foreach (var funcionario in listagemFuncionarios)
-            {
-                if (funcionario.IdFuncionario == id)
-                {
-                    funcionario.NomeFuncionario = novoNome;
-                }
-            }
-        }
+        public void AlteraNomeFuncionario(Funcionario id, string novoNome) => id.NomeFuncionario = novoNome;
 
-        public void AlteraCpfFuncionario(int id, string novoCpf)
-        {
-            foreach (var funcionario in listagemFuncionarios)
-            {
-                if (funcionario.IdFuncionario == id)
-                {
-                    funcionario.CpfFuncionario = novoCpf;
-                }
-            }
-        }
+        public void AlteraCpfFuncionario(Funcionario id, string novoCpf) =>  id.CpfFuncionario = novoCpf;
 
         public void ListarFuncionariosCadastrados()
         {
-            foreach (var funcionario in listagemFuncionarios)
+            foreach (Funcionario funcionario in listagemFuncionarios)
             {
                 Console.WriteLine($"ID: {funcionario.IdFuncionario} | Nome: {funcionario.NomeFuncionario} | CPF: {funcionario.CpfFuncionario}");
             }
+        }
+
+        public Funcionario BuscarFuncionarioPorId(int id)
+        {
+            foreach (Funcionario funcionario in listagemFuncionarios)
+            {
+                if (funcionario.IdFuncionario == id)
+                {
+                    return funcionario;
+                }
+            }
+
+            Console.WriteLine("Funcionário não encontrado!");
+            return null;
         }
     }
 }

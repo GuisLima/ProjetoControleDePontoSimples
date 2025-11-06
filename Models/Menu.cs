@@ -11,8 +11,10 @@ namespace ProjetoPonto.Models
     {
         GerenciadorFuncionario controlerFuncionario = new GerenciadorFuncionario();
         GerenciadorPontos controlerPonto = new GerenciadorPontos();
-        public MenuFuncionario menuFuncionario { get; set; }
-        public MenuPonto menuPonto { get; set; }
+
+        MenuFuncionario menuFuncionario = new MenuFuncionario();
+        MenuPonto menuPonto = new MenuPonto();
+        
         bool menuFuncional = true;
         string escolhaUsuario;
         

@@ -45,6 +45,7 @@ namespace ProjetoPonto.Models
 
                 if (TimeOnly.TryParseExact(horaDigitada, "HH:mm", CultureInfo.InvariantCulture, DateTimeStyles.None, out TimeOnly horaconvertida))
                 {
+                    Console.WriteLine("Hora cadastrada com sucesso!");
                     return horaconvertida;
                 }
                 else
@@ -101,9 +102,33 @@ namespace ProjetoPonto.Models
         }
 
         
-        public void AlteraCadastroPonto()
+        public void AlteracaoCadastroPonto()
         {
-            
+            Console.WriteLine("Selecione a informação que deseja alterar:");
+            Console.WriteLine("1 - Horário do Ponto");
+            Console.WriteLine("2 - Data do Ponto");
+            Console.WriteLine("0 - Voltar ao Menu Anterior");
+
+            string entradaUsuario = Console.ReadLine();
+
+            switch (entradaUsuario)
+            {
+                case "1":
+                    Ponto selecaoPontoTrocaHora = BuscarPonto();
+                    TimeOnly alteracaoHorario = CadastrarHoraPonto();
+                    _controlador.AlterarHorarioPonto(selecaoPontoTrocaHora, alteracaoHorario);
+                    break;
+
+                case "2":
+                     Ponto selecaoPontoTrocaData = BuscarPonto();
+                    DateOnly alteracaoData = CadastrarDataPonto();
+                    _controlador.AlterarDataPonto(selecaoPontoTrocaData, alteracaoData);
+                    break;
+
+                default:
+                    Console.WriteLine("Opção inválida!");
+                    break;
+            }
         }
     }
 }

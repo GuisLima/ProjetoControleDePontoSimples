@@ -35,7 +35,7 @@ namespace ProjetoPonto.Models
                 }
             }
         }
-        
+
         public TimeOnly CadastrarHoraPonto()
         {
             while (true)
@@ -45,12 +45,89 @@ namespace ProjetoPonto.Models
 
                 if (TimeOnly.TryParseExact(horaDigitada, "HH:mm", CultureInfo.InvariantCulture, DateTimeStyles.None, out TimeOnly horaconvertida))
                 {
+                    Console.WriteLine("Hora cadastrada com sucesso!");
                     return horaconvertida;
                 }
                 else
                 {
                     Console.WriteLine("Formato de hora inválido! Use HH:mm");
                 }
+            }
+        }
+
+        public Ponto BuscarPonto()
+        {
+            string escolhaUsuario;
+            while (true)
+            {
+                Console.WriteLine("===== Pontos Registrado =====");
+                Console.WriteLine("1 - Listar Todos os Pontos Cadastrados");
+                Console.WriteLine("2 - Selecionar Ponto por ID");
+
+                escolhaUsuario = Console.ReadLine();
+
+                switch (escolhaUsuario)
+                {
+                    case "1":
+                        _controlador.ListarPontos();
+                        break;
+
+                    case "2":
+                        Console.WriteLine("Digite a ID do Ponto: ");
+                        int idPonto = Convert.ToInt32(Console.ReadLine());
+
+                        if (idPonto <= 0)
+                        {
+                            Console.WriteLine("O valor não pode ser zero ou negativo");
+                            break;
+                        }
+
+                        Ponto ponto = _controlador.BuscarPontoPorId(idPonto);
+
+                        if (ponto == null)
+                        {
+                            break;
+                        }
+
+                        Console.WriteLine($"Ponto selecionado: ID - {ponto.IdPonto} | DATA - {ponto.RegistroDataPonto} | HORA - {ponto.RegistroHoraPonto}" +
+                                                                            $"| FUNCIONARIO - {ponto.FuncionarioVinculadoAoPonto.NomeFuncionario}");
+                        return ponto;
+
+
+                    default:
+                        Console.WriteLine("Opção inválida!");
+                        break;
+                }
+            }
+        }
+
+        
+        public void AlterarCadastroPonto()
+        {
+            Console.WriteLine("Selecione a informação que deseja alterar:");
+            Console.WriteLine("1 - Horário do Ponto");
+            Console.WriteLine("2 - Data do Ponto");
+            Console.WriteLine("0 - Voltar ao Menu Anterior");
+
+            string entradaUsuario = Console.ReadLine();
+
+            switch (entradaUsuario)
+            {
+                case "1":
+                    Ponto selecaoPontoTrocaHora = BuscarPonto();
+                    TimeOnly alteracaoHorario = CadastrarHoraPonto();
+                    _controlador.AlterarHorarioPonto(selecaoPontoTrocaHora, alteracaoHorario);
+                    break;
+
+                case "2":
+                     Ponto selecaoPontoTrocaData = BuscarPonto();
+                    DateOnly alteracaoData = CadastrarDataPonto();
+                    _controlador.AlterarDataPonto(selecaoPontoTrocaData, alteracaoData);
+                    break;
+
+                default:
+                    Console.WriteLine("Opção inválida!");
+                    break;
             }
         }
     }

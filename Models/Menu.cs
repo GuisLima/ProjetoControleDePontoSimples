@@ -49,6 +49,7 @@ namespace ProjetoPonto.Models
             while (menuFuncional)
             {
 
+                Console.WriteLine("Digite a opção desejada:");
                 escolhaUsuario = Console.ReadLine();
 
                 switch (escolhaUsuario)
@@ -75,6 +76,8 @@ namespace ProjetoPonto.Models
                         break;
 
                     case "4":
+                        menuPonto.AlterarCadastroPonto();
+                        Console.WriteLine("Para exibir o menu novamente pressione 9");
                         break;
 
                     case "5":

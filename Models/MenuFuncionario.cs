@@ -7,11 +7,12 @@ namespace ProjetoPonto.Models
 {
     public class MenuFuncionario
     {
+
+        private readonly GerenciadorFuncionario _controlador;
         public MenuFuncionario(GerenciadorFuncionario controlador)
         {
-            ControlerFuncionario = controlador;
+            _controlador = controlador;
         }
-        public GerenciadorFuncionario ControlerFuncionario { get; set; }
 
         public void CadastrarFuncionario()
         {
@@ -21,7 +22,7 @@ namespace ProjetoPonto.Models
             Console.Write("Digite o CPF do funcionário: ");
             string cpfFuncionario = Console.ReadLine();
 
-            ControlerFuncionario.AdicionaFuncionario(nomeFuncionario, cpfFuncionario);
+            _controlador.AdicionaFuncionario(nomeFuncionario, cpfFuncionario);
             Console.WriteLine("Inserção efetuada com sucesso!");
         }
 
@@ -39,7 +40,7 @@ namespace ProjetoPonto.Models
                 switch (escolhaUsuario)
                 {
                     case "1":
-                        ControlerFuncionario.ListarFuncionariosCadastrados();
+                        _controlador.ListarFuncionariosCadastrados();
                         break;
 
                     case "2":
@@ -52,7 +53,7 @@ namespace ProjetoPonto.Models
                             break;
                         }
 
-                        Funcionario funcionario = ControlerFuncionario.BuscarFuncionarioPorId(idFuncionario);
+                        Funcionario funcionario = _controlador.BuscarFuncionarioPorId(idFuncionario);
 
                         if (funcionario == null)
                         {
@@ -85,7 +86,7 @@ namespace ProjetoPonto.Models
                     Funcionario funcionarioNome = BuscarFuncionario();
                     Console.WriteLine("Digite o novo nome do funcionário: ");
                     string alteracaoNome = Console.ReadLine();
-                    ControlerFuncionario.AlteraNomeFuncionario(funcionarioNome, alteracaoNome);
+                    _controlador.AlteraNomeFuncionario(funcionarioNome, alteracaoNome);
                     Console.WriteLine("Alteração efetuada com sucesso!");
                     break;
 
@@ -93,7 +94,7 @@ namespace ProjetoPonto.Models
                     Funcionario funcionarioCpf = BuscarFuncionario();
                     Console.WriteLine("Digite o novo nome do funcionário: ");
                     string alteracaoCpf = Console.ReadLine();
-                    ControlerFuncionario.AlteraCpfFuncionario(funcionarioCpf, alteracaoCpf);
+                    _controlador.AlteraCpfFuncionario(funcionarioCpf, alteracaoCpf);
                     Console.WriteLine("Alteração efetuada com sucesso!");
                     break;
             }

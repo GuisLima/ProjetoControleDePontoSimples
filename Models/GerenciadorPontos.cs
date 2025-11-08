@@ -30,26 +30,22 @@ namespace ProjetoPonto.Models
             }
         }
 
-        public void AlterarHorarioPonto(int id, TimeOnly novoHorario)
-        {
-            foreach (var idHorarioRegistrado in listaPontosRegistrados)
-            {
-                if (idHorarioRegistrado.IdPonto == id)
-                {
-                    idHorarioRegistrado.RegistroHoraPonto = novoHorario;
-                }
-            }
-        }
+        public void AlterarHorarioPonto(Ponto id, TimeOnly novoHorario) => id.RegistroHoraPonto = novoHorario;
 
-        public void AlterarDataPonto(int id, DateOnly novaData)
+        public void AlterarDataPonto(Ponto id, DateOnly novaData) => id.RegistroDataPonto = novaData;
+
+        public Ponto BuscarPontoPorId(int id)
         {
-            foreach (var idDataRegistrada in listaPontosRegistrados)
+            foreach (Ponto ponto in listaPontosRegistrados)
             {
-                if (idDataRegistrada.IdPonto == id)
+                if (ponto.IdPonto == id)
                 {
-                    idDataRegistrada.RegistroDataPonto = novaData;
+                    return ponto;
                 }
             }
+
+            Console.WriteLine("Ponto não encontrado!");
+            return null;
         }
 
         public void ListarPontos()

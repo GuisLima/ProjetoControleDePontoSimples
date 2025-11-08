@@ -90,7 +90,7 @@ namespace ProjetoPonto.Models
                         }
 
                         Console.WriteLine($"Ponto selecionado: ID - {ponto.IdPonto} | DATA - {ponto.RegistroDataPonto} | HORA - {ponto.RegistroHoraPonto}" +
-                                                                            $"FUNCIONARIO - {ponto.FuncionarioVinculadoAoPonto}");
+                                                                            $"| FUNCIONARIO - {ponto.FuncionarioVinculadoAoPonto.NomeFuncionario}");
                         return ponto;
 
 

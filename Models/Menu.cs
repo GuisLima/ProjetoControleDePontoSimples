@@ -49,6 +49,7 @@ namespace ProjetoPonto.Models
             while (menuFuncional)
             {
 
+                Console.WriteLine("Digite a opção desejada:");
                 escolhaUsuario = Console.ReadLine();
 
                 switch (escolhaUsuario)

@@ -75,6 +75,8 @@ namespace ProjetoPonto.Models
                         break;
 
                     case "4":
+                        menuPonto.AlterarCadastroPonto();
+                        Console.WriteLine("Para exibir o menu novamente pressione 9");
                         break;
 
                     case "5":

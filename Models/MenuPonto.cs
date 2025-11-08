@@ -102,7 +102,7 @@ namespace ProjetoPonto.Models
         }
 
         
-        public void AlteracaoCadastroPonto()
+        public void AlterarCadastroPonto()
         {
             Console.WriteLine("Selecione a informação que deseja alterar:");
             Console.WriteLine("1 - Horário do Ponto");

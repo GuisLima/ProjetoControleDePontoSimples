@@ -35,7 +35,7 @@ namespace ProjetoPonto.Models
                 }
             }
         }
-        
+
         public TimeOnly CadastrarHoraPonto()
         {
             while (true)
@@ -52,6 +52,58 @@ namespace ProjetoPonto.Models
                     Console.WriteLine("Formato de hora inválido! Use HH:mm");
                 }
             }
+        }
+
+        public Ponto BuscarPonto()
+        {
+            string escolhaUsuario;
+            while (true)
+            {
+                Console.WriteLine("===== Pontos Registrado =====");
+                Console.WriteLine("1 - Listar Todos os Pontos Cadastrados");
+                Console.WriteLine("2 - Selecionar Ponto por ID");
+
+                escolhaUsuario = Console.ReadLine();
+
+                switch (escolhaUsuario)
+                {
+                    case "1":
+                        _controlador.ListarPontos();
+                        break;
+
+                    case "2":
+                        Console.WriteLine("Digite a ID do Ponto: ");
+                        int idPonto = Convert.ToInt32(Console.ReadLine());
+
+                        if (idPonto <= 0)
+                        {
+                            Console.WriteLine("O valor não pode ser zero ou negativo");
+                            break;
+                        }
+
+                        Ponto ponto = _controlador.BuscarPontoPorId(idPonto);
+
+                        if (ponto == null)
+                        {
+                            break;
+                        }
+
+                        Console.WriteLine($"Ponto selecionado: ID - {ponto.IdPonto} | DATA - {ponto.RegistroDataPonto} | HORA - {ponto.RegistroHoraPonto}" +
+                                                                            $"FUNCIONARIO - {ponto.FuncionarioVinculadoAoPonto}");
+                        return ponto;
+
+
+                    default:
+                        Console.WriteLine("Opção inválida!");
+                        break;
+                }
+            }
+        }
+
+        
+        public void AlteraCadastroPonto()
+        {
+            
         }
     }
 }

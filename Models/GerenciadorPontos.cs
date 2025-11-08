@@ -34,6 +34,20 @@ namespace ProjetoPonto.Models
 
         public void AlterarDataPonto(Ponto id, DateOnly novaData) => id.RegistroDataPonto = novaData;
 
+        public Ponto BuscarPontoPorId(int id)
+        {
+            foreach (Ponto ponto in listaPontosRegistrados)
+            {
+                if (ponto.IdPonto == id)
+                {
+                    return ponto;
+                }
+            }
+
+            Console.WriteLine("Ponto não encontrado!");
+            return null;
+        }
+
         public void ListarPontos()
         {
             foreach (var ponto in listaPontosRegistrados)
